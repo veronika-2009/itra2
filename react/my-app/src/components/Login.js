@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { login } from './UserFunctions';
-// require('es6-promise').polyfill();
-// require('isomorphic-fetch');
 
 class Login extends Component {
     constructor() {

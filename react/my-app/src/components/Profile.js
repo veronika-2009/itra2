@@ -7,7 +7,7 @@ class Profile extends Component {
         this.state = {
             login: '',
             email: '',
-            // password: ''
+            password: ''
         }
     }
 
@@ -17,7 +17,7 @@ class Profile extends Component {
         this.setState({
             email: decode.email,
             login: decode.login,
-            // password: decode.password
+            password: decode.password
         })
     }
     render() {
@@ -32,7 +32,7 @@ class Profile extends Component {
                         <tbody>
                             <tr>
                                 <td>Login</td>
-                                {/* <td>Password</td> */}
+                                <td>Password</td>
                                 <td>Email</td>
                                 <td>Date</td>
                             </tr>
@@ -40,7 +40,7 @@ class Profile extends Component {
                                 <tr>{this.state.login}</tr>
                             </tr>
                             <tr>
-                                {/* <tr>{this.state.password}</tr> */}
+                                <tr>{this.state.password}</tr>
                             </tr>
                             <tr>
                                 <tr>{this.state.email}</tr>

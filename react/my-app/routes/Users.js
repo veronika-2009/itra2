@@ -1,6 +1,6 @@
 const express = require('express');
 const users = express.Router();
-const cors = require('cors');
+// const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
@@ -52,7 +52,7 @@ users.post('/login', (req, res) => {
     })
     .then(data => {
         if(data) {
-            if(bcrypt.compareSync(req.body.password, user.password)) {
+            if(bcrypt.compareSync(req.body.password, data.password)) {
                 let token = jwt.sign(data.dataValues, process.env.SECRET_KEY, {
                     expiresIn: 1440
                 })
