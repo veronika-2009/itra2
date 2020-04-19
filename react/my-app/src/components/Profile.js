@@ -34,20 +34,27 @@ class Profile extends Component {
 
 
     userBlock(id) {
-        console.log('block')
         axios.post('http://localhost:4000/block/' + id)
             .then(response => {
                 if (response) {
-                    return <Redirect to={{ pathname: "/login" }} />;
+                    return this.props.history.push("/login");
 
                 }
             })
     }
     userUnblock(id) {
-        console.log('unblock')
         axios.post('http://localhost:4000/unblock/' + id)
             .then(response => {
                 if (response) {
+                    return this.props.history.push("/login");
+                }
+            })
+    }
+    handleFormSubmit(id) {
+        axios.post('http://localhost:4000/delete/' + id)
+            .then(response => {
+                if (response) {
+                    console.log(response)
                     return this.props.history.push("/login");
                 }
             })
@@ -75,19 +82,6 @@ class Profile extends Component {
         this.setState({ checkboxId: id })
     }
 
-    handleFormSubmit(id) {
-        axios.post('http://localhost:4000/delete/' + id)
-            .then(response => {
-                if (response) {
-                    return this.props.history.push("/login");
-
-
-                }
-            })
-            .catch(error => {
-                console.log(error.response)
-            })
-    }
     render() {
         return (
             <div>
