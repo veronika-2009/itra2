@@ -5,19 +5,20 @@ import unblock from '../img/lock.png';
 import './TablePage.css';
 
 const TablePage = (props) => {
+    // debugger
     const users = Object.values(props.state.data)
 
     return (
-        <form className='form' onClick={() => { props.handleFormSubmit(props.state.checkboxId) } } >
+        <form className='form'   >
             <div className="col-md-4 offset-md-10">
-                <img  src={trash} alt='trash'></img>
+                <img onClick={() => { props.handleFormSubmit(props.state.checkboxId) }} src={trash} alt='trash'></img>
                 <img src={block} alt='trash'></img>
                 <img src={unblock} alt='trash'></img>
             </div>
             <table className="table">
                 <thead>
                     <tr>
-                        <th><input type="checkbox" name="all" /></th>
+                        <th><input type="checkbox" onChange={props.checkedAll}  /></th>
                         <th>Id</th>
                         <th>Login</th>
                         <th>Email</th>
@@ -30,7 +31,7 @@ const TablePage = (props) => {
 
                     {users.map((user) =>
                         <tr key={user.id} >
-                            <th><input onClick={() => { props.checkboxId(user.id) }}  name='id' value={user.id} type="checkbox" /></th>
+                            <th><input onClick={() => { props.checkboxId(user.id) }}  name='subscription[]' value={user.id} type="checkbox" /></th>
                             <td>{user.id}</td>
                             <td>{user.login}</td>
                             <td>{user.email}</td>

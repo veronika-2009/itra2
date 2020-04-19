@@ -16,7 +16,7 @@ User.findAll().then( (respone) => res.send(respone) )
 users.post("/delete/:id", function(req, res){  
     const id = req.params.id;
     User.destroy({where: {id: id} }).then(() => {
-     res.redirect('http://localhost:3000/register')
+    return res.redirect('http://localhost:3000/register')
     }).catch(err=>console.log(err));
   });
   

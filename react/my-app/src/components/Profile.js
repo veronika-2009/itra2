@@ -31,6 +31,29 @@ class Profile extends Component {
                 console.log(error);
             });
     }
+
+    
+        checkedAll(event){
+
+          const allCheckboxCheked = event.target.checked 
+          var  checkboxes = document.getElementsByName('subscription[]')
+            if(allCheckboxCheked){
+                for(var i in checkboxes){
+                    if(checkboxes[i].checked == false){
+                        checkboxes[i].checked  = true;
+                    }
+                }
+            }else{
+                for(var i in checkboxes) {
+                    if(checkboxes[i].checked  == true){
+                        checkboxes[i].checked  = false;
+                    }
+                }
+            }
+        } 
+
+       
+    
     
     checkboxId = (id) => {
         console.log(id);
@@ -50,7 +73,8 @@ class Profile extends Component {
     render() {
         return (
             <div>
-                <TablePage state={this.state} handleFormSubmit={this.handleFormSubmit} checkboxId={this.checkboxId}/>
+                <TablePage state={this.state} handleFormSubmit={this.handleFormSubmit} 
+                checkboxId={this.checkboxId} checkedAll={this.checkedAll}/>
             </div>
         )
     }
