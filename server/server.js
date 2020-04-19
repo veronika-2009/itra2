@@ -1,8 +1,6 @@
 const express = require('express');
 const cors = require ('cors');
 const bodyParser = require ('body-parser');
-// const mysql = require("mysql2");
-// const sequelize = require('sequelize')
 const app = express();
 
 var port = process.env.PORT || 4000
@@ -13,7 +11,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}))
 
 
-let Users = require('../react/my-app/routes/Users');
+let Users = require('./routes/Users');
 app.use('/', Users)
 
 

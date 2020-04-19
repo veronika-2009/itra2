@@ -36,17 +36,17 @@ module.exports = db.sequelize.define(
             allowNull: false,
             defaultValue: Sequelize.NOW
         },
-        // status: {
-        //     type: Sequelize.ENUM('BLOCK', 'UNBLOCK'),
-        //     allowNull: false,
-        //     defaultValue: 'UNBLOCK',
-        //     validate: {
-        //         isIn: {
-        //             args: [['BLOCK', 'UNBLOCK']],
-        //             msg: "Wrong status"
-        //         }
-        //     }
-        // }
+        status: {
+            type: Sequelize.ENUM('BLOCK', 'UNBLOCK'),
+            allowNull: false,
+            defaultValue: 'UNBLOCK',
+            // validate: {
+            //     isIn: {
+            //         args: [['BLOCK', 'UNBLOCK']],
+            //         msg: "Wrong status"
+            //     }
+            // }
+        }
     },
     {
         timestamps: false

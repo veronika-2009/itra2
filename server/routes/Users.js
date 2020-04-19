@@ -1,6 +1,5 @@
 const express = require('express');
 const users = express.Router();
-// const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
@@ -9,6 +8,10 @@ const User = require('../models/User');
 
 process.env.SECRET_KEY = 'secret';
 
+users.get( "/profile", (req, res) =>
+User.findAll().then( (respone) => res.send(respone) )
+);
+
 
 users.post('/register', (req, res) => {
     const today = new Date()
@@ -16,7 +19,10 @@ users.post('/register', (req, res) => {
         login: req.body.login,
         password:req.body.password,
         email: req.body.email,
-        date_reg:today
+        date_reg: req.body.date_reg,
+        date_author: today,
+        status: req.body.status
+
     }
     User.findOne({
         where: {

@@ -1,6 +1,4 @@
 import axios from 'axios';
-// require('es6-promise').polyfill();
-// require('isomorphic-fetch');
 
 
 export const register = async data => {
@@ -25,6 +23,17 @@ export const login = async data => {
         });
         localStorage.setItem('usertoken', res.data);
         return res.data;
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+export const usersList = async data => {
+    try {
+        const response = await axios.get('http://localhost:4000/profile', {
+        })
+        return response;
     }
     catch (err) {
         console.log(err);
