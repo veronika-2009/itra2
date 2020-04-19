@@ -39,3 +39,37 @@ export const usersList = async data => {
         console.log(err);
     }
 }
+
+// export const userRemove = async data => {
+//     try {
+//         const response = await axios.get('http://localhost:4000/delete/', { 
+//         })
+//         return response;
+//         console.log(data)
+//     }
+//     catch (err) {
+//         console.log(err);
+//     }
+// }
+// export const blockStatus = async data => {
+//     try {
+//         const response = await axios.put('http://localhost:4000/block/id', { 
+//         })
+//         return response;
+//     }
+//     catch (err) {
+//         console.log(err);
+//     }
+// }
+// export const unblockStatus = async data => {
+//     try {
+//         const response = await axios.put('http://localhost:4000/unblock/id', { 
+//         })
+//         return response;
+//     }
+//     catch (err) {
+//         console.log(err);
+//     }
+// }
+
+

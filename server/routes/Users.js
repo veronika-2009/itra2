@@ -6,12 +6,34 @@ const User = require('../models/User');
 
 
 
+
 process.env.SECRET_KEY = 'secret';
 
 users.get( "/profile", (req, res) =>
 User.findAll().then( (respone) => res.send(respone) )
 );
 
+users.post("/delete/:id", function(req, res){  
+    const id = req.params.id;
+    User.destroy({where: {id: id} }).then(() => {
+     res.redirect('http://localhost:3000/register')
+    }).catch(err=>console.log(err));
+  });
+  
+
+//   users.put("/block/:id", urlencodedParser, function (req, res) {
+//     User.update({where:{status: req.body.status}, raw: "UNBLOCK" }).then(() => {
+//       res.redirect("/login");
+//     })
+//     .catch(err=>console.log(err));
+//   });
+
+//   users.put("/unblock/:id", urlencodedParser, function (req, res) {
+//     User.update({where:{status: req.body.status}, raw: "BLOCK" }).then(() => {
+//       res.redirect("/login");
+//     })
+//     .catch(err=>console.log(err));
+//   });
 
 users.post('/register', (req, res) => {
     const today = new Date()
@@ -22,7 +44,6 @@ users.post('/register', (req, res) => {
         date_reg: req.body.date_reg,
         date_author: today,
         status: req.body.status
-
     }
     User.findOne({
         where: {
