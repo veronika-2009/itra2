@@ -13,23 +13,22 @@ users.post("/delete/:id", function (req, res) {
     const id = req.params.id;
     console.log(req)
     User.destroy({ where: { id: id } }).then((response) => {
-      return res.send(response);
-})
-
-console.log(response)
+        return res.sendStatus(200);
+    })
     .catch(err => console.log(err));
 });
+
 users.post("/block/:id", function (req, res) {
     const id = req.params.id;
     User.update({ status: "BLOCK" }, { where: { id: id } }).then((response) => {
-      return  res.send(response);
+        return res.send(response);
     })
         .catch(err => console.log(err));
 });
 users.post("/unblock/:id", function (req, res) {
     const id = req.params.id;
     User.update({ status: "UNBLOCK" }, { where: { id: id } }).then((response) => {
-      return  res.send(response);
+        return res.send(response);
     })
         .catch(err => console.log(err));
 });
